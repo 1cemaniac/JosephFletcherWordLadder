@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluePrismWordLadder", "BluePrismWordLadder\BluePrismWordLadder.csproj", "{0FC5C603-6072-45CB-85EF-9E3157140A1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluePrismWordLadderTests", "BluePrismWordLadderTests\BluePrismWordLadderTests.csproj", "{6797BD6C-00F5-45E5-B70D-160D0E97CC6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FC5C603-6072-45CB-85EF-9E3157140A1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FC5C603-6072-45CB-85EF-9E3157140A1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC5C603-6072-45CB-85EF-9E3157140A1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FC5C603-6072-45CB-85EF-9E3157140A1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6797BD6C-00F5-45E5-B70D-160D0E97CC6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6797BD6C-00F5-45E5-B70D-160D0E97CC6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6797BD6C-00F5-45E5-B70D-160D0E97CC6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6797BD6C-00F5-45E5-B70D-160D0E97CC6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4AAE547-D03C-4537-BEC5-92E21FDA62A5}
+	EndGlobalSection
+EndGlobal
