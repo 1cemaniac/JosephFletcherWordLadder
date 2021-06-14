@@ -17,9 +17,9 @@ namespace BluePrismWordLadderTests.Tests
         }
 
         [Test]
-        public void LoadWordsWithoutErrors()
+        public void LoadDictionaryWordsWithoutErrors()
         {
-            var result = ClassToTest.LoadStringsToHashSet($"{Directory.GetCurrentDirectory()}\\TestFiles\\ValidAndInvalidFourLettersOnly.txt");
+            var result = ClassToTest.LoadDictionaryWords($"{Directory.GetCurrentDirectory()}\\TestFiles\\ValidAndInvalidFourLettersOnly.txt");
             Assert.IsNotNull(result);
         }
 
@@ -28,18 +28,38 @@ namespace BluePrismWordLadderTests.Tests
         [TestCase("ValidAndInvalidVaryingLength", ExpectedResult = 6)]
         [TestCase("OnlyLinkWords", ExpectedResult = 4)]
         [TestCase("LinkWordsWithExtra", ExpectedResult = 7)]
-        public int LoadCorrectAmountOfWords(string file)
+        public int LoadDictionaryWordsCorrectAmountOfWords(string file)
         {
-            var result = ClassToTest.LoadStringsToHashSet($"{Directory.GetCurrentDirectory()}\\TestFiles\\{file}.txt");
+            var result = ClassToTest.LoadDictionaryWords($"{Directory.GetCurrentDirectory()}\\TestFiles\\{file}.txt");
             return result.Count;
         }
 
         [Test]
-        public void LoadWordsWithExactMatch()
+        public void LoadDictionaryWordsWithExactMatch()
         {
-            var result = ClassToTest.LoadStringsToHashSet($"{Directory.GetCurrentDirectory()}\\TestFiles\\OnlyLinkWords.txt");
+            var result = ClassToTest.LoadDictionaryWords($"{Directory.GetCurrentDirectory()}\\TestFiles\\OnlyLinkWords.txt");
             HashSet<string> correctHashSet = new() { "cold", "cord", "card", "ward" };
             Assert.AreEqual(correctHashSet,result);
+        }
+
+        [Test]
+        public void LoadPriorityTrackerWithoutErrors()
+        {
+            var result = ClassToTest.LoadPriorityTracker($"{Directory.GetCurrentDirectory()}\\TestFiles\\PriorityTrackerTest.txt");
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void LoadPriorityTrackerExactMatch()
+        {
+            var result = ClassToTest.LoadPriorityTracker($"{Directory.GetCurrentDirectory()}\\TestFiles\\PriorityTrackerTest.txt");
+            Dictionary<char, int> correctData = new()
+            {
+                { 'a', 1 },
+                { 'b', 3 },
+                { 'c', 0 }
+            };
+            Assert.AreEqual(correctData, result);
         }
     }
 }

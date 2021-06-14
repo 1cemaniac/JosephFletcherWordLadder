@@ -14,7 +14,9 @@ namespace BluePrismWordLadder.Logic
         {
             try
             {
-                var data = _dataLoader.LoadStringsToHashSet(filenameIn);
+                var data = _dataLoader.LoadDictionaryWords(filenameIn);
+                if (data == null)
+                    return false;
                 var wordLadder = _ladderGenerator.GenerateLadder(data, startWord, endWord);
                 return _resultOutputter.Output(wordLadder, filenameOut);
             }

@@ -4,6 +4,7 @@ namespace BluePrismWordLadder.Logic
 {
     public interface IDataLoader
     {
-        HashSet<string> LoadStringsToHashSet(string filename);
+        HashSet<string> LoadDictionaryWords(string filename);
+        Dictionary<char, int> LoadPriorityTracker(string fileLocation);
     }
 }

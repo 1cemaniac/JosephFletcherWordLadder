@@ -11,7 +11,6 @@ namespace BluePrismWordLadder.Logic
         private IPriorityTracker _priorityTracker { get; set; }
         public LadderGenerator(IWordProcessor wordProcessor, IPriorityTracker priorityTracker) => (_wordProcessor,_priorityTracker) = (wordProcessor,priorityTracker);
 
-        private List<WordNode> SearchResults;
         private List<WordNode> SearchForward;
         private List<WordNode> SearchSideways;
         private List<WordNode> SearchBack;
@@ -26,7 +25,6 @@ namespace BluePrismWordLadder.Logic
         private void Setup(HashSet<string> words, string startWord, string endWord)
         {
             WordNode startingNode = new(startWord, null, endWord);
-            SearchResults = new();
             SearchForward = new() { startingNode };
             SearchSideways = new();
             SearchBack= new();
@@ -48,7 +46,7 @@ namespace BluePrismWordLadder.Logic
                 if (SearchBack.Any(wn => _wordProcessor.BackStep(wn, endWord)))
                     break;
 
-                SearchResults.ForEach(sr => _priorityTracker.Log(sr.Word));
+                _wordProcessor.Results.ForEach(sr => _priorityTracker.Log(sr.Word));
 
                 SearchBack = SearchSideways;
                 SearchSideways = SearchForward;

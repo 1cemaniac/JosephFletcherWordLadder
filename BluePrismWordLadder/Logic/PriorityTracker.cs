@@ -1,6 +1,7 @@
 ﻿using BluePrismWordLadder.Data;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +18,10 @@ namespace BluePrismWordLadder.Logic
 
         public void Setup(int wordLength)
         {
-            FileLocation = $"Priority_List_For_Words_Of_Length_{wordLength}";
-            var fileData = _dataLoader.LoadStringsToHashSet(FileLocation);
-            if (fileData == null)
+            FileLocation = $"{Directory.GetCurrentDirectory()}\\Priority_List_For_Words_Of_Length_{wordLength}.txt";
+            PriorityData = _dataLoader.LoadPriorityTracker(FileLocation);
+            if (PriorityData == null || PriorityData.Count == 0)
                 PriorityData = CreateNewPriorityData();
-            else
-                PriorityData = ParseExistingPriorityData(fileData);
         }
 
         private Dictionary<char, int> CreateNewPriorityData()
@@ -31,17 +30,6 @@ namespace BluePrismWordLadder.Logic
             for (int i = 97; i < 123; i++)
             {
                 priorityData.Add((char)i, 0);
-            }
-            return priorityData;
-        }
-
-        private Dictionary<char, int> ParseExistingPriorityData(HashSet<string> fileData)
-        {
-            Dictionary<char, int> priorityData = new();
-            foreach(var entry in fileData)
-            {
-                var splitEntry = entry.Split(":");
-                priorityData.Add(char.Parse(splitEntry[0]), int.Parse(splitEntry[1]));
             }
             return priorityData;
         }

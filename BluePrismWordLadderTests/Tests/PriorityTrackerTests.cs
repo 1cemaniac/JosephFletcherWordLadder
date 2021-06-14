@@ -18,15 +18,15 @@ namespace BluePrismWordLadderTests.Tests
         public void Setup()
         {
             DataLoaderMock = new();
-            HashSet<string> data = new()
+            Dictionary<char,int> data = new()
             {
-                "a:1",
-                "b:3",
-                "c:0"
+                { 'a', 1 },
+                { 'b', 3 },
+                { 'c', 0 }
             };
-            DataLoaderMock.Setup(x => x.LoadStringsToHashSet(It.IsAny<string>()))
+            DataLoaderMock.Setup(x => x.LoadPriorityTracker(It.IsAny<string>()))
                           .Returns(data);
-            DataLoaderMock.Setup(x => x.LoadStringsToHashSet(It.Is<string>(s => s.Contains("2"))))
+            DataLoaderMock.Setup(x => x.LoadPriorityTracker(It.Is<string>(s => s.Contains("2"))))
                           .Returns(() => { return null; });
 
             ResultOutputterMock = new();
@@ -72,7 +72,7 @@ namespace BluePrismWordLadderTests.Tests
                 "c"
             };
 
-            DataLoaderMock.Verify(dlm => dlm.LoadStringsToHashSet(It.Is<string>(s => s.Contains("1"))));
+            DataLoaderMock.Verify(dlm => dlm.LoadPriorityTracker(It.Is<string>(s => s.Contains("1"))));
             Assert.AreEqual(expected, result.Select(r => r.Word).ToList());
         }
 
