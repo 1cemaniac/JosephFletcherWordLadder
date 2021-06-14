@@ -14,13 +14,13 @@ namespace BluePrismWordLadder.Logic
 
         public WordLadderLogic(IDataLoader dataLoader, ILadderGenerator ladderGenerator, IResultOutputter resultOutputter) => (_dataLoader, _ladderGenerator, _resultOutputter) = (dataLoader, ladderGenerator, resultOutputter);
 
-        public bool FindWordLadder(string filename, string startWord, string endWord)
+        public bool FindWordLadder(string filenameIn, string filenameOut, string startWord, string endWord)
         {
             try
             {
-                var data = _dataLoader.LoadStringsToHashSet(filename);
+                var data = _dataLoader.LoadStringsToHashSet(filenameIn);
                 var wordLadder = _ladderGenerator.GenerateLadder(data, startWord, endWord);
-                return _resultOutputter.Output(wordLadder,"Output.txt");
+                return _resultOutputter.Output(wordLadder, filenameOut);
             }
             catch(Exception e)
             {

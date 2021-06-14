@@ -2,6 +2,6 @@
 {
     public interface IWordLadderLogic
     {
-        public bool FindWordLadder(string filename, string startWord, string endWord);
+        public bool FindWordLadder(string filenameIn, string filenameOut, string startWord, string endWord);
     }
 }

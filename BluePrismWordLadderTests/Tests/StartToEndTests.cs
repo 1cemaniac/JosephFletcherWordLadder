@@ -20,16 +20,21 @@ namespace BluePrismWordLadderTests.Tests
         [TestCase("InvalidOnly", ExpectedResult = false)]
         public bool StartToEndTestCanFindResult(string testFile)
         {
-            return ClassToTest.FindWordLadder($"{Directory.GetCurrentDirectory()}\\TestFiles\\{testFile}.txt", "cold", "ward");
+            var filenameIn = $"{Directory.GetCurrentDirectory()}\\TestFiles\\{testFile}.txt";
+            var filenameOut = $"{Directory.GetCurrentDirectory()}\\TestFiles\\OutputTest.txt";
+            return ClassToTest.FindWordLadder(filenameIn,filenameOut, "cold", "ward");
         }
 
         [TestCase("OnlyLinkWords","ExpectedOutput")]
         [TestCase("LinkWordsWithExtra", "ExpectedOutput")]
         public void StartToEndTestCorrectResult(string testFile, string outputFile)
         {
-           ClassToTest.FindWordLadder($"{Directory.GetCurrentDirectory()}\\TestFiles\\{testFile}.txt","cold","ward");
+            var filenameIn = $"{Directory.GetCurrentDirectory()}\\TestFiles\\{testFile}.txt";
+            var filenameOut = $"{Directory.GetCurrentDirectory()}\\TestFiles\\OutputTest.txt";
+            var filenameExpected = $"{Directory.GetCurrentDirectory()}\\TestFiles\\{outputFile}.txt";
+           ClassToTest.FindWordLadder(filenameIn,filenameOut,"cold","ward");
             var result = File.ReadAllText($"Output.txt");
-            Assert.AreEqual(File.ReadAllText($"{Directory.GetCurrentDirectory()}\\TestFiles\\{outputFile}.txt"), result);
+            Assert.AreEqual(File.ReadAllText(filenameExpected), result);
         }
     }
 }
